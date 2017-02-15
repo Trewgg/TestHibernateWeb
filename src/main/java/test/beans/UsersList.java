@@ -1,5 +1,6 @@
 package test.beans;
 
+import org.hibernate.criterion.Order;
 import test.entity.UsersEntity;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -16,16 +17,14 @@ public class UsersList {
     private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
     private Session session = sessionFactory.openSession();
 
-    public List<UsersEntity> getUsers() {
+    private List<UsersEntity> getUsers() {
 
         try {
             session.beginTransaction();
 
             Criteria criteria = session.createCriteria(UsersEntity.class);
+            criteria.addOrder(Order.asc("userName"));
             usersList = criteria.list();
-
-//            Query query = session.createQuery("from UsersEntity");
-//            usersList = (ArrayList<UsersEntity>) query.list();
 
             session.getTransaction().commit();
         } catch (Exception e) {
@@ -36,5 +35,13 @@ public class UsersList {
         }
 
         return usersList;
+    }
+
+    public List<UsersEntity> getUsersList() {
+        if (!usersList.isEmpty()) {
+            return usersList;
+        } else {
+            return getUsers();
+        }
     }
 }
