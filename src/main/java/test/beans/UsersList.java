@@ -7,11 +7,16 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import test.util.HibernateUtil;
 
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class UsersList {
+@ManagedBean
+@ApplicationScoped
+public class UsersList implements Serializable {
     private List<UsersEntity> usersList = new ArrayList<UsersEntity>();
 
     private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();

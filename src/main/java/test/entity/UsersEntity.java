@@ -10,6 +10,9 @@ public class UsersEntity {
     private String userName;
     private int idrole;
 
+    public UsersEntity() {
+    }
+
     @Id
     @Column(name = "idusers", nullable = false)
     public int getIdusers() {

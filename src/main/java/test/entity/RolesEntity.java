@@ -9,6 +9,9 @@ public class RolesEntity {
     private int idroles;
     private String roleName;
 
+    public RolesEntity() {
+    }
+
     @Id
     @Column(name = "idroles", nullable = false)
     public int getIdroles() {

@@ -9,10 +9,15 @@ import test.entity.RolesEntity;
 import test.entity.UsersEntity;
 import test.util.HibernateUtil;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RolesList {
+@ManagedBean
+@SessionScoped
+public class RolesList implements Serializable{
 
     private List<RolesEntity> usersList = new ArrayList<RolesEntity>();
 
